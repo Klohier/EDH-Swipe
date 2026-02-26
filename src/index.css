@@ -29,13 +29,13 @@ body {
 .page {
   max-width: 800px;
   margin: 0 auto;
-  padding: 2rem 1rem 4rem;
+  padding: 1rem 1rem 2rem;
 }
 
 /* ── Nav ── */
 
 nav {
-  padding: 1rem 2rem;
+  padding: 0.75rem 2rem;
   border-bottom: 1px solid #2a2a2a;
 }
 
@@ -48,9 +48,9 @@ nav > ul {
 /* ── Typography ── */
 
 h1 {
-  font-size: clamp(1.8rem, 6vw, 2.8rem);
+  font-size: clamp(1.4rem, 5vw, 2rem);
   text-align: center;
-  margin-bottom: 1.5rem;
+  margin-bottom: 0.5rem;
   letter-spacing: -0.01em;
 }
 
@@ -127,7 +127,7 @@ figure {
   display: flex;
   justify-content: center;
   gap: 1rem;
-  margin: 1.5rem 0;
+  margin: 0.75rem 0;
 }
 
 /* ── Card Info ── */
@@ -136,16 +136,16 @@ figure {
   background: #0e0e0e;
   border: 1px solid #2a2a2a;
   border-radius: 8px;
-  padding: 1.5rem;
-  margin-top: 0.5rem;
+  padding: 1rem;
+  margin-top: 0.25rem;
   font-family: "Palatino Linotype", Palatino, serif;
 }
 
 .card-info__name {
-  font-size: 1.3rem;
+  font-size: 1.1rem;
   font-weight: 600;
   color: #c9a84c;
-  margin-bottom: 0.75rem;
+  margin-bottom: 0.5rem;
   letter-spacing: 0.02em;
   display: block;
 }
@@ -153,14 +153,14 @@ figure {
 .card-info__divider {
   height: 1px;
   background: linear-gradient(to right, #c9a84c44, transparent);
-  margin-bottom: 1rem;
+  margin-bottom: 0.75rem;
 }
 
 .card-info__grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 0.75rem 1rem;
-  margin-bottom: 1rem;
+  gap: 0.5rem 1rem;
+  margin-bottom: 0.75rem;
 }
 
 .card-info__field {
@@ -178,7 +178,7 @@ figure {
 }
 
 .card-info__value {
-  font-size: 0.95rem;
+  font-size: 0.9rem;
   color: #e0d8cc;
   display: block;
 }
@@ -186,14 +186,14 @@ figure {
 .card-info__oracle {
   display: flex;
   flex-direction: column;
-  gap: 0.4rem;
+  gap: 0.3rem;
   border-top: 1px solid #1e1e1e;
-  padding-top: 1rem;
+  padding-top: 0.75rem;
 }
 
 .card-info__oracle-text {
-  font-size: 0.88rem;
-  line-height: 1.6;
+  font-size: 0.85rem;
+  line-height: 1.5;
   color: #a89e8e;
   font-style: italic;
   display: block;
@@ -209,14 +209,14 @@ figure {
   position: relative;
   display: flex;
   justify-content: center;
-  height: 460px;
-  margin-bottom: 2rem;
+  height: 360px;
+  margin-bottom: 0.75rem;
 }
 
 .deck__card {
   position: absolute;
   width: 100%;
-  max-width: 240px;
+  max-width: 200px;
   border-radius: 12px;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.7);
   transition: filter 0.3s ease;
@@ -300,7 +300,6 @@ figure {
   align-items: start;
 }
 
-/* Stack vertically on mobile */
 @media (max-width: 768px) {
   .chosen-layout {
     grid-template-columns: 1fr;
@@ -386,9 +385,105 @@ figure {
 
 .app-blurb {
   max-width: 480px;
-  margin: 0 auto 1.5rem;
+  margin: 0 auto 0.75rem;
   text-align: center;
   opacity: 0.75;
-  font-size: 0.95rem;
-  line-height: 1.6;
+  font-size: 0.85rem;
+  line-height: 1.5;
+}
+
+.filter-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+
+.filter-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.filter-label {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  opacity: 0.5;
+}
+
+.filter-colors {
+  display: flex;
+  gap: 0.4rem;
+}
+
+.color-btn {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  border: 2px solid transparent;
+  background: none;
+  cursor: pointer;
+  opacity: 0.35;
+  transition:
+    opacity 0.15s,
+    border-color 0.15s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  line-height: 1;
+}
+
+.color-btn__symbol {
+  font-size: 0.9rem;
+  display: block;
+  pointer-events: none;
+}
+
+.color-btn--active {
+  opacity: 1;
+  border-color: currentColor;
+}
+
+.filter-cmc {
+  display: flex;
+  gap: 0.35rem;
+}
+
+.cmc-btn {
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+  border: 1px solid currentColor;
+  background: none;
+  font-size: 0.8rem;
+  cursor: pointer;
+  opacity: 0.4;
+  transition: opacity 0.15s;
+}
+
+.cmc-btn--active {
+  opacity: 1;
+  font-weight: 600;
+}
+
+.filter-clear {
+  font-size: 0.75rem;
+  padding: 0.2rem 0.6rem;
+  border: 1px solid currentColor;
+  border-radius: 4px;
+  background: none;
+  cursor: pointer;
+  opacity: 0.5;
+  align-self: flex-end;
+}
+
+.filter-error {
+  text-align: center;
+  opacity: 0.6;
+  font-style: italic;
+  margin-top: 2rem;
 }
