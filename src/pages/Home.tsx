@@ -31,6 +31,7 @@ async function fetchRandomCard(): Promise<Card> {
     OracleText: json.oracle_text ?? json.card_faces?.[0]?.oracle_text ?? "",
     Power: json.power ?? null,
     Toughness: json.toughness ?? null,
+    EdhrecUrl: json.related_uris?.edhrec ?? "",
   };
 }
 

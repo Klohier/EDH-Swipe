@@ -7,4 +7,5 @@ export interface Card {
   OracleText: string;
   Power: string | null;
   Toughness: string | null;
+  EdhrecUrl: string;
 }

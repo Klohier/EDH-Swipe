@@ -292,3 +292,94 @@ figure {
   border-color: #ff4444;
   background-color: #9a2a2a;
 }
+
+.chosen-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  align-items: start;
+}
+
+/* Stack vertically on mobile */
+@media (max-width: 768px) {
+  .chosen-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .chosen-preview {
+    position: static;
+  }
+}
+
+.chosen-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.chosen-preview {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  position: sticky;
+  top: 1rem;
+}
+
+.chosen-preview__img {
+  width: 100%;
+  max-width: 340px;
+  border-radius: 12px;
+}
+
+.chosen-preview__empty {
+  opacity: 0.5;
+  font-style: italic;
+  margin-top: 2rem;
+}
+
+.chosen-card-name {
+  flex: 1;
+  cursor: pointer;
+}
+
+.chosen-active {
+  opacity: 0.7;
+  font-weight: bold;
+}
+
+.chosen-pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 0.5rem;
+}
+
+.page-btn {
+  background: none;
+  border: 1px solid currentColor;
+  border-radius: 4px;
+  padding: 0.25rem 0.75rem;
+  font-size: 1.25rem;
+  cursor: pointer;
+}
+
+.page-btn:disabled {
+  opacity: 0.3;
+  cursor: default;
+}
+
+.page-label {
+  font-size: 0.9rem;
+  opacity: 0.7;
+}
+
+.edhrec-link {
+  display: inline-block;
+  padding: 0.5rem 1.25rem;
+  border: 1px solid currentColor;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 600;
+}
