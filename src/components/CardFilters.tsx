@@ -1,9 +1,9 @@
 const COLORS = [
-  { code: "W", label: "White", symbol: "☀️" },
-  { code: "U", label: "Blue", symbol: "💧" },
-  { code: "B", label: "Black", symbol: "💀" },
-  { code: "R", label: "Red", symbol: "🔥" },
-  { code: "G", label: "Green", symbol: "🌲" },
+  { code: "W", label: "White", symbol: "W" },
+  { code: "U", label: "Blue", symbol: "U" },
+  { code: "B", label: "Black", symbol: "B" },
+  { code: "R", label: "Red", symbol: "R" },
+  { code: "G", label: "Green", symbol: "G" },
 ] as const;
 
 export type ColorCode = (typeof COLORS)[number]["code"];
