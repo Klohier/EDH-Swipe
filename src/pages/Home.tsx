@@ -49,6 +49,8 @@ async function fetchRandomCard(apiUrl: string): Promise<Card> {
     Power: json.power ?? null,
     Toughness: json.toughness ?? null,
     EdhrecUrl: json.related_uris?.edhrec ?? "",
+    Colors: json.color_identity ?? [],
+    Cmc: json.cmc ?? 0,
   };
 }
 

@@ -4,6 +4,8 @@ export interface Card {
   Img: string;
   Price: string | null;
   ManaCost: string;
+  Colors: string[];
+  Cmc: number;
   OracleText: string;
   Power: string | null;
   Toughness: string | null;
