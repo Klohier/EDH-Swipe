@@ -199,6 +199,67 @@ figure {
   display: block;
 }
 
+/* ── Deck ── */
+
+.deck-wrapper {
+  position: relative;
+}
+
+.deck {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  height: 460px;
+  margin-bottom: 2rem;
+}
+
+.deck__card {
+  position: absolute;
+  width: 100%;
+  max-width: 240px;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.7);
+  transition: filter 0.3s ease;
+  top: 0;
+  cursor: grab;
+}
+
+.deck__card:active {
+  cursor: grabbing;
+}
+
+/* ── Deck Hints ── */
+
+.deck-hints {
+  position: absolute;
+  top: 40%;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 1rem;
+  pointer-events: none;
+  z-index: 20;
+}
+
+.deck__hint--yes,
+.deck__hint--no {
+  font-size: 1.5rem;
+  font-weight: 700;
+  opacity: 0;
+  pointer-events: none;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
+  letter-spacing: 0.05em;
+}
+
+.deck__hint--yes {
+  color: #4ade80;
+}
+
+.deck__hint--no {
+  color: #f87171;
+}
+
 /* ── Chosen Page ── */
 
 .cardback {

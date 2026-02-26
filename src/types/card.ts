@@ -1,4 +1,5 @@
 export interface Card {
+  id: string;
   Name: string;
   Img: string;
   Price: string | null;
