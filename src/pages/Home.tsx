@@ -83,6 +83,12 @@ export default function Home() {
   return (
     <div className="page">
       <h1>Commander Roulette</h1>
+      <p className="app-blurb">
+        Can't decide on a commander? Swipe right to add a card to your
+        shortlist, or left to skip it. Head to <strong>Chosen</strong> when
+        you're done to review your picks and find deck-building inspiration on
+        EDHREC.
+      </p>
 
       <DisplayCard
         deck={deck}

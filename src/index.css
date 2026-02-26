@@ -27,7 +27,7 @@ body {
 /* ── Layout ── */
 
 .page {
-  max-width: 480px;
+  max-width: 800px;
   margin: 0 auto;
   padding: 2rem 1rem 4rem;
 }
@@ -382,4 +382,13 @@ figure {
   border-radius: 6px;
   text-decoration: none;
   font-weight: 600;
+}
+
+.app-blurb {
+  max-width: 480px;
+  margin: 0 auto 1.5rem;
+  text-align: center;
+  opacity: 0.75;
+  font-size: 0.95rem;
+  line-height: 1.6;
 }

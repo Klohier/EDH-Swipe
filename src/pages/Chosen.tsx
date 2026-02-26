@@ -42,7 +42,7 @@ export default function Chosen() {
   };
 
   return (
-    <>
+    <div className="page">
       <h1>Chosen</h1>
       <div className="chosen-layout">
         {/* Left: card list */}
@@ -127,6 +127,6 @@ export default function Chosen() {
           )}
         </div>
       </div>
-    </>
+    </div>
   );
 }
