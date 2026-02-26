@@ -1,115 +1,92 @@
-/* :root {
+*,
+*::before,
+*::after {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+:root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
-
-  color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
+  background-color: #1c1b22;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  -webkit-text-size-adjust: 100%;
-}
-
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
+  color-scheme: dark;
 }
 
 body {
-  margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
   min-height: 100vh;
+  min-width: 320px;
 }
+
+/* ── Layout ── */
+
+.page {
+  max-width: 480px;
+  margin: 0 auto;
+  padding: 2rem 1rem 4rem;
+}
+
+/* ── Nav ── */
+
+nav {
+  padding: 1rem 2rem;
+  border-bottom: 1px solid #2a2a2a;
+}
+
+nav > ul {
+  list-style: none;
+  display: flex;
+  justify-content: flex-end;
+}
+
+/* ── Typography ── */
 
 h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+  font-size: clamp(1.8rem, 6vw, 2.8rem);
+  text-align: center;
+  margin-bottom: 1.5rem;
+  letter-spacing: -0.01em;
 }
+
+/* ── Buttons & Links ── */
 
 button {
   border-radius: 8px;
   border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
-}
-
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
-} */
-
-*{
-  padding: 0;
-  margin: 0;
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
-
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color:  #1c1b22;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-text-size-adjust: 100%;
-}
-
-
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
+  padding: 0.6em 1.4em;
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
   background-color: #202672;
+  color: rgba(255, 255, 255, 0.87);
   cursor: pointer;
-  transition: border-color 0.25s;
+  transition:
+    border-color 0.25s,
+    background-color 0.25s;
 }
+
 button:hover {
   border-color: #646cff;
 }
-button:focus,
+
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
-
+button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
 
 a {
-  margin: 1em;
+  display: inline-block;
+  margin: 0.25em;
   border-radius: 8px;
   border: 1px solid transparent;
   padding: 0.6em 1.2em;
@@ -117,88 +94,140 @@ a {
   font-weight: 500;
   font-family: inherit;
   background-color: #202672;
+  color: rgba(255, 255, 255, 0.87);
   cursor: pointer;
   transition: border-color 0.25s;
   text-decoration: none;
 }
+
 a:hover {
   border-color: #646cff;
 }
-a:focus,
+
 a:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
+/* ── Card Image ── */
 
-nav{
-  padding: 2em;
-  /* background-color: rgb(35, 33, 170); */
+figure {
+  text-align: center;
 }
 
-.display__image{
+.display__image {
   display: block;
-  margin-left: auto;
-  margin-right: auto;
-  text-align: center;
-  max-width: 80%;
-  /* border-radius: 2em; */
-  box-shadow: 1em 1em 1em rgba(0, 0, 0, 0.582);
+  margin: 0 auto;
+  width: 100%;
+  max-width: 340px;
+  border-radius: 4px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6);
 }
 
-figcaption{
-  font-size: 4vw;
-  margin: 1em;
-  text-align: center;
-}
-
-.display__controls{
-  margin: 2em;
+.display__controls {
   display: flex;
-  justify-content: space-between;
-}
-
-ul{
-  list-style: none;
-}
-
-nav > ul{
-  list-style: none;
-  display: flex;
-  justify-content: right;
-}
-
-h1{
-    font-size: 8vw;
-    text-align: center;
-}
-
-.chosenDisplay > li{
-  display: flex;
-  padding: 0.5em;
-  justify-content: space-between;
-}
-
-.cardback{
-  margin: auto;
-  max-width: max-content;
-  padding: 2em;
   justify-content: center;
-  /* text-align: center; */
-  border: solid;
+  gap: 1rem;
+  margin: 1.5rem 0;
 }
 
-.deleteButton{
-  background-color: red;
-  margin-left: 3em;
+/* ── Card Info ── */
+
+.card-info {
+  background: #0e0e0e;
+  border: 1px solid #2a2a2a;
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin-top: 0.5rem;
+  font-family: "Palatino Linotype", Palatino, serif;
 }
 
-p{
-  display: inline;
+.card-info__name {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #c9a84c;
+  margin-bottom: 0.75rem;
+  letter-spacing: 0.02em;
+  display: block;
 }
 
+.card-info__divider {
+  height: 1px;
+  background: linear-gradient(to right, #c9a84c44, transparent);
+  margin-bottom: 1rem;
+}
 
-@media screen and (min-width: 1024px) {
- .display__image{
-        max-width: 20%;
-    }
+.card-info__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem 1rem;
+  margin-bottom: 1rem;
+}
+
+.card-info__field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.card-info__label {
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #6b6357;
+  display: block;
+}
+
+.card-info__value {
+  font-size: 0.95rem;
+  color: #e0d8cc;
+  display: block;
+}
+
+.card-info__oracle {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  border-top: 1px solid #1e1e1e;
+  padding-top: 1rem;
+}
+
+.card-info__oracle-text {
+  font-size: 0.88rem;
+  line-height: 1.6;
+  color: #a89e8e;
+  font-style: italic;
+  display: block;
+}
+
+/* ── Chosen Page ── */
+
+.cardback {
+  border: 1px solid #2a2a2a;
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin-top: 1rem;
+}
+
+.chosenDisplay > li {
+  display: flex;
+  align-items: center;
+  padding: 0.5em 0;
+  justify-content: space-between;
+  border-bottom: 1px solid #2a2a2a;
+}
+
+.chosenDisplay > li:last-child {
+  border-bottom: none;
+}
+
+.deleteButton {
+  background-color: #7a1f1f;
+  border-color: transparent;
+  flex-shrink: 0;
+  margin-left: 2rem;
+}
+
+.deleteButton:hover {
+  border-color: #ff4444;
+  background-color: #9a2a2a;
 }
