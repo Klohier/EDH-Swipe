@@ -17,11 +17,21 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color-scheme: dark;
-}
 
-body {
-  min-height: 100vh;
-  min-width: 320px;
+  /* Design tokens */
+  --color-surface: #1c1b22;
+  --color-surface-raised: #18181f;
+  --color-border: #2a2a2a;
+
+  --color-btn-bg: #1e2a3a;
+  --color-btn-bg-hover: #253447;
+  --color-btn-border-hover: #4a8fc4;
+
+  --color-btn-danger-bg: #7a1f1f;
+  --color-btn-danger-bg-hover: #9a2a2a;
+  --color-btn-danger-border-hover: #ff4444;
+
+  --radius-btn: 8px;
 }
 
 /* ── Layout ── */
@@ -36,13 +46,14 @@ body {
 
 nav {
   padding: 0.75rem 2rem;
-  border-bottom: 1px solid #2a2a2a;
+  border-bottom: 1px solid var(--color-border);
 }
 
 nav > ul {
   list-style: none;
   display: flex;
-  justify-content: flex-end;
+  gap: 1.5rem;
+  justify-content: center;
 }
 
 /* ── Typography ── */
@@ -54,58 +65,49 @@ h1 {
   letter-spacing: -0.01em;
 }
 
-/* ── Buttons & Links ── */
+/* ── .btn — shared button/link-button styles ── */
 
-button {
-  border-radius: 8px;
+.btn {
+  display: inline-block;
+  border-radius: var(--radius-btn);
   border: 1px solid transparent;
   padding: 0.6em 1.4em;
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
-  background-color: #202672;
+  background-color: var(--color-btn-bg);
   color: rgba(255, 255, 255, 0.87);
   cursor: pointer;
+  text-decoration: none;
   transition:
     border-color 0.25s,
     background-color 0.25s;
 }
 
-button:hover {
-  border-color: #646cff;
+.btn:hover {
+  border-color: var(--color-btn-border-hover);
+  background-color: var(--color-btn-bg-hover);
+  color: rgba(255, 255, 255, 0.87);
 }
 
-button:focus-visible {
+.btn:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
-button:disabled {
+.btn:disabled {
   opacity: 0.4;
   cursor: not-allowed;
 }
 
-a {
-  display: inline-block;
-  margin: 0.25em;
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #202672;
-  color: rgba(255, 255, 255, 0.87);
-  cursor: pointer;
-  transition: border-color 0.25s;
-  text-decoration: none;
+/* Button variants */
+
+.btn--danger {
+  background-color: var(--color-btn-danger-bg);
 }
 
-a:hover {
-  border-color: #646cff;
-}
-
-a:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+.btn--danger:hover {
+  border-color: var(--color-btn-danger-border-hover);
+  background-color: var(--color-btn-danger-bg-hover);
 }
 
 /* ── Card Image ── */
@@ -134,7 +136,7 @@ figure {
 
 .card-info {
   background: #0e0e0e;
-  border: 1px solid #2a2a2a;
+  border: 1px solid var(--color-border);
   border-radius: 8px;
   padding: 1rem;
   margin-top: 0.25rem;
@@ -263,7 +265,7 @@ figure {
 /* ── Chosen Page ── */
 
 .cardback {
-  border: 1px solid #2a2a2a;
+  border: 1px solid var(--color-border);
   border-radius: 8px;
   padding: 1.5rem;
   margin-top: 1rem;
@@ -274,7 +276,7 @@ figure {
   align-items: center;
   padding: 0.5em 0;
   justify-content: space-between;
-  border-bottom: 1px solid #2a2a2a;
+  border-bottom: 1px solid var(--color-border);
 }
 
 .chosenDisplay > li:last-child {
@@ -282,15 +284,8 @@ figure {
 }
 
 .deleteButton {
-  background-color: #7a1f1f;
-  border-color: transparent;
   flex-shrink: 0;
   margin-left: 2rem;
-}
-
-.deleteButton:hover {
-  border-color: #ff4444;
-  background-color: #9a2a2a;
 }
 
 .chosen-layout {
@@ -500,8 +495,8 @@ figure {
 }
 
 .modal {
-  background: #1c1b22;
-  border: 1px solid #2a2a2a;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
   border-radius: 12px;
   padding: 1.5rem;
   max-width: 700px;
@@ -558,11 +553,13 @@ figure {
   }
 }
 
+/* ── Footer ── */
+
 .footer {
   margin-top: auto;
   padding: 1.5rem 1rem;
   text-align: center;
-  border-top: 1px solid #e2e8f0;
+  border-top: 1px solid var(--color-border);
 }
 
 .footer p {
@@ -573,19 +570,9 @@ figure {
 }
 
 .footer a {
-  display: inline;
-  margin: 0;
-  border: none;
-  border-radius: 0;
-  padding: 0;
-  background: none;
   color: #64748b;
-  text-decoration: underline;
-  text-underline-offset: 2px;
-  transition: color 0.15s ease;
 }
 
 .footer a:hover {
-  border-color: transparent;
   color: #94a3b8;
 }

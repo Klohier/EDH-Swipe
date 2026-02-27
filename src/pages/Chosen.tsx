@@ -133,7 +133,7 @@ export default function Chosen() {
                 <li key={card.Name} onClick={() => setSelected(card)}>
                   <span className="chosen-card-name">{card.Name}</span>
                   <button
-                    className="deleteButton"
+                    className="btn btn--danger"
                     onClick={(e) => {
                       e.stopPropagation();
                       deleteCard(card.Name);
@@ -188,7 +188,7 @@ export default function Chosen() {
                 <CardInfo card={selected} />
                 {selected.EdhrecUrl && (
                   <a
-                    className="edhrec-link"
+                    className="btn"
                     href={selected.EdhrecUrl}
                     target="_blank"
                     rel="noopener noreferrer"
