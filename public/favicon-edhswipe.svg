@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <!-- Background -->
+  <rect width="64" height="64" rx="12" fill="#1e3a5f"/>
+  
+  <!-- EDH text -->
+  <text x="32" y="27" font-family="Georgia, serif" font-size="16" font-weight="bold" fill="white" text-anchor="middle" letter-spacing="1">EDH</text>
+
+  <!-- Swipe text -->
+  <text x="32" y="43" font-family="Georgia, serif" font-size="11" fill="#93c5fd" text-anchor="middle" letter-spacing="2">SWIPE</text>
+</svg>
