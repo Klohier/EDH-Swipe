@@ -7,6 +7,7 @@ import CardInfo from "../components/CardInfo";
 
 const STORAGE_KEY = "Cards";
 const PRELOAD_COUNT = 10;
+const RATE_LIMIT_DELAY_MS = 75;
 
 const COLOR_ORDER = ["W", "U", "B", "R", "G"];
 function sortColors(colors: ColorCode[]): string {
@@ -32,8 +33,15 @@ function loadCards(): Card[] {
   }
 }
 
+const delay = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
+
 async function fetchRandomCard(apiUrl: string): Promise<Card> {
-  const res = await fetch(apiUrl);
+  const res = await fetch(apiUrl, {
+    headers: {
+      "User-Agent": "EDHSwipe/1.0",
+      Accept: "application/json",
+    },
+  });
   const json = await res.json();
   if (json.object === "error") throw new Error(json.details);
   const imageUris = json.image_uris ?? json.card_faces?.[0]?.image_uris;
@@ -54,6 +62,21 @@ async function fetchRandomCard(apiUrl: string): Promise<Card> {
   };
 }
 
+async function fetchCardsSequentially(
+  apiUrl: string,
+  count: number,
+  signal?: AbortSignal,
+): Promise<Card[]> {
+  const results: Card[] = [];
+  for (let i = 0; i < count; i++) {
+    if (signal?.aborted) break;
+    if (i > 0) await delay(RATE_LIMIT_DELAY_MS);
+    const card = await fetchRandomCard(apiUrl);
+    results.push(card);
+  }
+  return results;
+}
+
 export default function Home() {
   const [deck, setDeck] = useState<Card[]>([]);
   const [cards, setCards] = useState<Card[]>(loadCards);
@@ -66,23 +89,29 @@ export default function Home() {
   const apiUrl = buildApiUrl(selectedColors, selectedCmc);
 
   useEffect(() => {
+    const controller = new AbortController();
     setLoading(true);
     setFilterError(null);
     setDeck([]);
     refilling.current = false;
-    Promise.all(
-      Array.from({ length: PRELOAD_COUNT }, () => fetchRandomCard(apiUrl)),
-    )
+
+    fetchCardsSequentially(apiUrl, PRELOAD_COUNT, controller.signal)
       .then((fetched) => {
-        setDeck(fetched);
-        setLoading(false);
+        if (!controller.signal.aborted) {
+          setDeck(fetched);
+          setLoading(false);
+        }
       })
       .catch(() => {
-        setFilterError(
-          "No commanders found for these filters. Try a different combination.",
-        );
-        setLoading(false);
+        if (!controller.signal.aborted) {
+          setFilterError(
+            "No commanders found for these filters. Try a different combination.",
+          );
+          setLoading(false);
+        }
       });
+
+    return () => controller.abort();
   }, [apiUrl]);
 
   useEffect(() => {
@@ -93,9 +122,7 @@ export default function Home() {
     if (loading || refilling.current || deck.length >= 5) return;
     refilling.current = true;
     const needed = PRELOAD_COUNT - deck.length;
-    Promise.all(
-      Array.from({ length: needed }, () => fetchRandomCard(apiUrl)),
-    ).then((newCards) => {
+    fetchCardsSequentially(apiUrl, needed).then((newCards) => {
       setDeck((d) => [...d, ...newCards]);
       refilling.current = false;
     });
