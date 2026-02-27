@@ -4,6 +4,7 @@ import CardControls from "../components/CardControls";
 import CardFilters, { ColorCode } from "../components/CardFilters";
 import { Card } from "../types/card";
 import CardInfo from "../components/CardInfo";
+import Footer from "../components/Footer";
 
 const STORAGE_KEY = "Cards";
 const PRELOAD_COUNT = 10;
@@ -197,6 +198,7 @@ export default function Home() {
           {currentCard && !loading && <CardInfo card={currentCard} />}
         </>
       )}
+      <Footer />
     </div>
   );
 }

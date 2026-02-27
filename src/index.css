@@ -557,3 +557,35 @@ figure {
     max-width: 260px;
   }
 }
+
+.footer {
+  margin-top: auto;
+  padding: 1.5rem 1rem;
+  text-align: center;
+  border-top: 1px solid #e2e8f0;
+}
+
+.footer p {
+  font-size: 0.75rem;
+  color: #94a3b8;
+  margin: 0.25rem 0;
+  line-height: 1.5;
+}
+
+.footer a {
+  display: inline;
+  margin: 0;
+  border: none;
+  border-radius: 0;
+  padding: 0;
+  background: none;
+  color: #64748b;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  transition: color 0.15s ease;
+}
+
+.footer a:hover {
+  border-color: transparent;
+  color: #94a3b8;
+}

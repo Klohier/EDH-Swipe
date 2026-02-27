@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Card } from "../types/card";
 import CardInfo from "../components/CardInfo";
 import CardFilters, { ColorCode } from "../components/CardFilters";
+import Footer from "../components/Footer";
 
 const STORAGE_KEY = "Cards";
 const PAGE_SIZE = 8;
@@ -200,6 +201,7 @@ export default function Chosen() {
           </div>
         </div>
       )}
+      <Footer />
     </div>
   );
 }
